@@ -1,46 +1,47 @@
-# La petite API style Amazon
+# The small Amazon style API
 
-Cette API est basée sur le celèbre site web Amazon et utilise MongoDB comme base de données, Node.js comme environnement d'exécution et Redis comme cache. Elle permet de gérer des produits, des avis et des utilisateurs avec les fonctionnalités suivantes :
-- Gérer des produits : créer, modifier, supprimer et afficher des produits.
-- Gérer des avis : créer, modifier, supprimer et afficher des avis pour des produits.
-- Gérer des utilisateurs : s’enregistrer, se connecter, modifier et afficher son profil.
-- Sécuriser les routes : utiliser des tokens JWT pour protéger les routes qui nécessitent une authentification.
-- Optimiser les requêtes : utiliser Redis comme cache pour les requêtes GET qui renvoient des données fréquemment demandées.
+
+This API is based on the famous Amazon website and uses MongoDB as a database, Node.js as a runtime and Redis as a cache. It allows you to manage products, reviews and users with the following features:
+- Manage products: create, edit, delete and display products.
+- Manage reviews: create, edit, delete and display reviews for products.
+- Manage users: register, log in, edit and view their profile.
+- Secure routes: use JWT tokens to protect routes that require authentication.
+- Optimize queries: use Redis as a cache for GET queries that return frequently requested data.
 
 ## Installation
 
-Cette API requiert des dépendances. Pour installer les dépendances nécessaires, exécutez la commande suivante à la racine du projet :
+This API requires dependencies. To install the dependencies needed, run the following command at the project root:
 ``` bash
 npm install express mongoose dotenv bcryptjs jsonwebtoken redis
 ```
-***NOTE : Vous devez aussi avoir MongoDB et Redis installés sur votre machine.***
+***NOTE: You must also have MongoDB and Redis installed on your machine.***
 
 ## Configuration :
 
-Adaptez le fichier .env situé à la racine du projet :
+Adapt the . env file located at the root of the project :
 ``` bash
-MONGO_URI=mongodb://localhost:27017/auth_api # ou l'URL de votre base de données MongoDB en ligne
-JWT_SECRET=secret123 # ou le secret de votre choix pour le JWT
-PORT=3000 # ou le port de votre choix pour le serveur
+MONGO_URI=mongodb://localhost:27017/auth_api # or the URL of your online MongoDB database
+JWT_SECRET=secret123 # or the secret of your choice for the JWT
+PORT=3000 # or the port of your choice for the server
 ```
 
 ## Usage :
-Pour démarrer le serveur, exécutez la commande suivante :
+To start the server, run the following command:
 
 ```npm start```
 
 
-Voici une liste des routes disponibles :
-- **GET /products :** pour obtenir tous les produits.
-- **GET /products/:id :** pour obtenir un produit par son id.
-- **POST /products :** pour créer un nouveau produit (nécessite un token JWT valide).
-- **PUT /products/:id :** pour modifier un produit par son id (nécessite un token JWT valide).
-- **DELETE /products/:id :** pour supprimer un produit par son id (nécessite un token JWT valide).
-- **GET /reviews/product/:id :** pour obtenir tous les avis pour un produit par son id.
-- **POST /reviews/product/:id :** pour créer un nouvel avis pour un produit par son id (nécessite un token JWT valide).
-- **PUT /reviews/:id :** pour modifier un avis par son id (nécessite un token JWT valide et être le propriétaire de l’avis).
-- **DELETE /reviews/:id :** pour supprimer un avis par son id (nécessite un token JWT valide et être le propriétaire de l’avis).
-- **POST /users/register :** pour s’enregistrer en tant qu’utilisateur.
-- **POST /users/login :** pour se connecter en tant qu’utilisateur et obtenir un token JWT.
-- **GET /users/profile :** pour obtenir le profil d’un utilisateur connecté (nécessite un token JWT valide).
-- **PUT /users/profile :** pour modifier le profil d’un utilisateur connecté (nécessite un token JWT valide).
+Here is a list of available routes:
+- **GET /products :** to get all the products.
+- **GET /products/:id :** to get a product by its id.
+- **POST /products :** to create a new product (requires a valid JWT token).
+- **PUT /products/:id :** to change a product by its id (requires a valid JWT token).
+- **DELETE /products/:id :** to delete a product by its id (requires a valid JWT token).
+- **GET /reviews/product/:id :** to get all reviews for a product by its id.
+- **POST /reviews/product/:id :** to create a new notification for a product by its id (requires a valid JWT token).
+- **PUT /reviews/:id :** to change a notice by its id (requires a valid JWT token and be the owner of the notice).
+- **DELETE /reviews/:id :** to delete a notice by its id (requires a valid JWT token and be the owner of the notice).
+- **POST /users/register :** to register as a user.
+- **POST /users/login :** to log in as a user and get a JWT token.
+- **GET /users/profile :** to get the profile of a connected user (requires a valid JWT token).
+- **PUT /users/profile :** to change the profile of a logged in user (requires a valid JWT token).
