@@ -1,0 +1,31 @@
+# Test the GET /products route
+GET http://localhost:3000/products
+Content-Type: application/json
+
+###
+
+# Test the POST /products route
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "iPhone 14",
+    "price": 999,
+    "description": "The latest smartphone from Apple"
+}
+
+###
+
+# Test the PUT /products/:id route
+PUT http://localhost:3000/products/60a7c5f3f3a9c30b6c1f2e8d
+Content-Type: application/json
+
+{
+    "price": 899
+}
+
+###
+
+# Test the DELETE /products/:id route
+DELETE http://localhost:3000/products/60a7c5f3f3a9c30b6c1f2e8d
+Content-Type: application/json
